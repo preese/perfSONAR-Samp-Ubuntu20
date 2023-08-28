@@ -1,0 +1,5 @@
+# perfSONAR release repository
+# Repository key is available at http://downloads.perfsonar.net/debian/perfsonar-release.gpg.key
+# apt-key adv --fetch-keys http://downloads.perfsonar.net/debian/perfsonar-official.gpg.key
+deb http://downloads.perfsonar.net/debian/ perfsonar-release main
+deb-src http://downloads.perfsonar.net/debian/ perfsonar-release main
