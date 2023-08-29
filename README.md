@@ -1,4 +1,4 @@
-# perfSONAR-Sampler VERSION 5
+# Ubuntu20-perfSONAR-Sampler VERSION 5
 This project illustrates, using VMs, what the document [MaDDash Quick Install Guide v4](https://docs.google.com/document/d/1k7FT66MKPy3JjpD5k0OFAFlTpSdFmZ6huhTUDQ2rGGY/edit?usp=sharing) covers bit by bit.
 
 The project pulls together files to move from bare VMs to working perfSONAR Testpoint nodes and a MaDDash grid.  It doesn't show real network tests but just traffic between the different VMs on the single host.  The project files can later be reviewed and edited for use on real hardware for perfSONAR node configs and MaDDash server web setups.
@@ -39,10 +39,11 @@ Here is the chart for my systems. You'll need to make one of these using your av
 
 |Name |IP# |Mac Addr |
 | ---| ---| ---|
-|ps1|192.168.1.211|52:54:00:73:6f:41|
-|ps2|192.168.1.212|52:54:00:73:6f:42|
-|ps3|192.168.1.213|52:54:00:73:6f:43|
-|md|192.168.1.214|52:54:00:73:6f:44|
+|ps1|192.168.0.41|52:54:00:f8:45:3e|
+|ps2|192.168.0.42||52:54:00:43:c8:6b
+
+|ps3|192.168.0.43||52:54:00:cb:70:4d
+|md|192.168.0.54||52:54:00:73:7f:44
 
 If you make changes to the above chart, plan to make similar edits to:
 
@@ -66,6 +67,6 @@ Start the VMs:
 ```
 vagrant up
 ```
-**Some 30+ minutes later** you should be able to vist the MaDDash server URL to see the grids.  In the stock case it would be **http://192.168.1.214/maddash-webui**, (change to your IP from the Chart).
+**Some 30+ minutes later** you should be able to vist the MaDDash server URL to see the grids.  In the stock case it would be **http://192.168.0.54/maddash-webui**, (change to your IP from the Chart).
 
 Let the project run for a couple of hours.  If all went well, you should see the grid start to populate

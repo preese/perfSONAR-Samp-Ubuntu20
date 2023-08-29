@@ -5,6 +5,11 @@
   become: yes
   tasks:
     - name: Copy PS-release list
+      ansible.builtin.get_url:
+        url: http://downloads.perfsonar.net/debian/perfsonar-release.list
+        dest: .
+
+    - name: Deploy PS-release list 
       copy:
         src: perfsonar-release.list
         dest: /etc/apt/sources.list.d/
@@ -19,21 +24,6 @@
     - name: Apt update
       apt:
         update_cache: yes
-
-#    - name: For maddash VM, add epel and ps Repo
-#      apt:
-#        name: 
-#          - dnf-plugins-core
-#          - epel-release
-#        state: latest   
-
- #    - name: Add powertools for MD system
- #      command: dnf config-manager --set-enabled powertools
-
-#    - name: For maddash VM, add epel and ps Repo
-#      apt:
-#        name: http://software.internet2.edu/rpms/el7/x86_64/latest/packages/perfsonar-repo-0.11-1.noarch.rpm
-#        state: present
 
     - name: For maddash VM, add maddash and archive rpms to MaDDash Server
       apt:
@@ -86,19 +76,19 @@
       command: "psconfig publish /home/vagrant/mesh.json"
 
     - name: Remote add file, lets the archive know where the JSON config file lives
-      command: 'psconfig remote add "https://192.168.1.214/psconfig/mesh.json"'
+      command: 'psconfig remote add "https://192.168.0.54/psconfig/mesh.json"'
 
     - name: Add new project name for web site
       ansible.builtin.replace:
         path: /etc/maddash/maddash-webui/config.json
         regexp: '"My perfSONAR Dashboard"'
-        replace: '"ps-v5"'
+        replace: '"Ubuntu20-ps-v5"'
 
     - name: Add correct grid name, so it opens first
       ansible.builtin.replace:
         path: /etc/maddash/maddash-webui/config.json
         regexp: '"My Sites"'
-        replace: '"ps-v5-grid"'
+        replace: '"U20-ps-v5-grid"'
 
     - name: Restart psconfig-maddash-agent
       service:
@@ -121,6 +111,11 @@
   become: yes
   tasks:
     - name: Copy PS-release list
+      ansible.builtin.get_url:
+        url: http://downloads.perfsonar.net/debian/perfsonar-release.list
+        dest: .
+
+    - name: Copy PS-release list
       copy:
         src: perfsonar-release.list
         dest: /etc/apt/sources.list.d/
@@ -136,22 +131,6 @@
       apt:
         update_cache: yes
 
-
-    #    - name: Add perfsonar rpms for epel and ps Repo
-    #      apt:
-    #    name:
-    #      - dnf-plugins-core
-    #      - epel-release  
-    #    state: latest
-
-#    - name: Add powertools to Testpoint nodes
-#      command: dnf config-manager --set-enabled powertools
-
-          #      apt:
-          #        name: http://software.internet2.edu/rpms/el7/x86_64/latest/packages/perfsonar-repo-0.11-1.noarch.rpm
-          #        state: present
-
-
     - name: Add perfsonar rpms to all testpoint edge nodes
       apt:
         name:
@@ -162,7 +141,7 @@
         state: present
   
     - name: For testpoint VMs, install remote URL and archives
-      command: 'psconfig remote add "https://192.168.1.214/psconfig/mesh.json"'
+      command: 'psconfig remote add "https://192.168.0.54/psconfig/mesh.json"'
 
     - name: For testpoint VMs, restart psconfig-pscheduler-agent
       service:
