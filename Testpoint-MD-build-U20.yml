@@ -134,7 +134,7 @@
     - name: Add perfsonar rpms to all testpoint edge nodes
       apt:
         name:
-          - perfsonar-testpoint
+          - perfsonar-toolkit
           - perfsonar-toolkit-ntp
           - perfsonar-toolkit-security
           - perfsonar-toolkit-servicewatcher

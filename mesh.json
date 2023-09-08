@@ -1,6 +1,6 @@
 {
     "_meta": {
-        "display-name": "ps-v5-grid"
+        "display-name": "U20-ps-v5-grid"
     },
 
     "archives": {
@@ -8,7 +8,7 @@
            "archiver":"http",
            "data":{
               "schema":3,
-              "_url":"http://192.168.1.214/logstash",
+              "_url":"http://192.168.0.54/logstash",
               "verify-ssl":false,
               "op":"put",
               "_headers":{
@@ -17,24 +17,24 @@
               }
             },
            "_meta": {
-              "esmond_url": "http://192.168.1.214/esmond/perfsonar/archive/"
+              "esmond_url": "http://192.168.0.54/esmond/perfsonar/archive/"
            }
 
          }	   
      },
     "addresses": {
-        "ps1": { "address": "192.168.1.211" },
-        "ps2": { "address": "192.168.1.212" },
-        "ps3": { "address": "192.168.1.213" }
+        "ps5-1": { "address": "192.168.0.41" },
+        "ps5-2": { "address": "192.168.0.42" },
+        "ps5-3": { "address": "192.168.0.43" }
     },
 
     "groups": {
         "Home_group_mesh": {
             "type": "mesh",
             "addresses": [
-                { "name": "ps1" },
-                { "name": "ps2" },
-                { "name": "ps3" }
+                { "name": "ps5-1" },
+                { "name": "ps5-2" },
+                { "name": "ps5-3" }
             ]
          }
      },
